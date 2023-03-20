@@ -55,6 +55,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  #Docker
+  virtualisation.docker.enable = true;
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -79,11 +82,12 @@
   users.users.hackthemac = {
     isNormalUser = true;
     description = "hackthemac";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       firefox
       git
       vscode
+      direnv
     #  thunderbird
     ];
   };
@@ -109,7 +113,10 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
+
+
+
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
