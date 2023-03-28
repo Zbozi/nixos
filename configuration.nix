@@ -57,6 +57,7 @@
 
   #Docker
   virtualisation.docker.enable = true;
+  virtualisation.docker.liveRestore = false;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -88,9 +89,16 @@
       git
       vscode
       direnv
+      coreutils
+      nss
+      mkcert
+      watch
+      docker
+      docker-ls
     #  thunderbird
     ];
   };
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -116,7 +124,7 @@
   services.openssh.enable = true;
 
 
-
+   networking.extraHosts = "127.0.0.1 dotbase.local";
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
